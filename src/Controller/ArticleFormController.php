@@ -27,14 +27,15 @@ class ArticleFormController extends AbstractController
 
     public function form(Request $request, EntityManagerInterface $manager, Security $security)
     {
+        $slugger = new AsciiSlugger();
         $article = new Article();
         $formArticle = $this->createForm(ArticleFormType::class, $article);
-
         $formArticle->handleRequest($request);
 
         if ($formArticle->isSubmitted() && $formArticle->isValid()){
+            $article = $formArticle->getData();
             $actualTitle = $article->getTitle();
-            $slug = strtolower(str_replace(" ", "-", $actualTitle));
+            $slug = strtolower($slugger->slug($actualTitle));
             $article->setSlug($slug);
             if (!$article->getId()){
                 $article->setCreatedAt(new \DateTime());
@@ -46,13 +47,18 @@ class ArticleFormController extends AbstractController
             $manager->persist($article);
             $manager->flush();
 
-            return $this->redirectToRoute('articles', ['id' => $article->getId()]);
+/*            return $this->redirectToRoute('articles', ['id' => $article->getId()]); */
+            return $this->redirectToRoute('dashboard_home');
         }
-        return $this->render('dashboard/form/article_form.html.twig', [
-            'formArticle' => $formArticle->createView(),
-            'editMode' => $article->getId() !== null
-        ]);
+        return $this->render('dashboard/form/article_form.html.twig');
     }
+
+
+
+
+
+
+
 
 
 }
