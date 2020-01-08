@@ -1,5 +1,9 @@
+{% block style %}
+    <link rel="stylesheet" href="{{ asset('stylesheet/user_style/navbar.css') }}">
+{% endblock %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Nome</a>
+    <a class="navbar-brand" href="{{ path('home')}}">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,6 +14,26 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Continents
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    {% for continent in continents %}
+                        <span class="dropdown-item continents">{{continent.name}}</span>
+
+                        <div class="dropdown-divider"></div>
+                        {% for country in continent.countries %}
+                            <div class="dropdown-submenu">
+
+                                <a class="dropdown-item" href="{{ path('articles',{slug:country.slug})}}">{{country.name}}</a>
+
+                            </div>
+
+                        {% endfor %}
+
+                        <div class="dropdown-divider"></div>
+
+                    {% endfor %}
+                </div>
+
+
             </li>
 
             <li class="nav-item">
