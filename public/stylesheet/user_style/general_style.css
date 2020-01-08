@@ -1,0 +1,65 @@
+    /* GENERAL */
+
+    /* Style body (font, couleur, alignement) */
+    body{
+    font-family: 'Quicksand', sans-serif;
+    color: #616161;
+    text-align: justify;
+}
+
+    /* Style liens (couleur) */
+    a {
+        color: white;
+    }
+
+    /* Style liens:hover (couleur) */
+    a:hover {
+        text-decoration: none;
+        color: #e6e6e6;
+    }
+
+
+    /* NAVBAR */
+
+    /* Style navbar (taille, épaisseur, bg) */
+    .navbar{
+    font-size: 1.3em;
+    font-weight: lighter;
+    background-color: #76b7cc;
+}
+
+
+    /* CONTENU */
+
+/* TITRES */
+
+/* Style commun au titres (centrés, light, italic, fond gris) */
+.titles{
+    text-align: center;
+    font-style: italic;
+    background-color: #f3f3f3;
+}
+
+/* Style titre principal (taille et padding) */
+h1{
+    font-size: 3em;
+    padding: 10px;
+}
+
+/* Style titre secondaire (taille et padding) */
+h2{
+    font-size: 2em;
+    padding: 8px;
+}
+
+/* FOOTER */
+
+    /* Style footer (bg, couleur, taille, position, poid et padding) */
+.footer{
+    background-color: #5eb5e0;
+    color: white;
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: lighter;
+    padding: 5px;
+    }
