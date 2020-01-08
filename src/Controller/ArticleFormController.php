@@ -28,6 +28,7 @@ class ArticleFormController extends AbstractController
     public function form(Request $request, EntityManagerInterface $manager, Security $security)
     {
         $slugger = new AsciiSlugger();
+
         $article = new Article();
         $formArticle = $this->createForm(ArticleFormType::class, $article);
         $formArticle->handleRequest($request);
