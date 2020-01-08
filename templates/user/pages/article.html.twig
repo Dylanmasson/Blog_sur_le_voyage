@@ -1,28 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block styles %}
+
+{% block style %}
     <link rel="stylesheet" href="{{ asset('stylesheet/user_style/article_style.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="article">
-        <div class="category mt-5"> article.category </div>
-        <div class="tags mt-2"> article.tags </div>
+    <div class="container">
+        <div class="article">
+            <div class="category mt-5"> category </div>
+            <div class="tags mt-2"> {{ article.tags }} </div>
+        </div>
     </div>
-</div>
 
-<div class="container-fluid mt-4">
-    <h1 class="titles">article.title</h1>
-</div>
-
-<div class="container mt-3 mb-5">
-    <div class="article">
-        <div class="credit">Publié par <span class="user">article.user</span>  le article.created_at|date(d/m/Y) </div>
-
-        <div class="image mt-5" style="width: 700px"></div>
-        <div class="mt-5 ml-5 mr-5 content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In molestie venenatis leo, sit amet condimentum arcu tincidunt nec. Ut mollis ante sed ex luctus, non ultrices nisl egestas. Quisque in orci gravida, dictum dolor nec, pulvinar odio. Nullam nec pharetra dui, et sagittis lacus. Cras aliquam nibh rutrum, viverra diam quis, ullamcorper magna. Nunc venenatis eros ipsum, in dignissim massa condimentum ac. Cras mollis lacus eu dolor sodales pellentesque. Aenean sodales, purus non ornare posuere, est urna luctus justo, id fermentum tortor quam ac velit. Cras nec ex eget purus interdum dignissim tempor in lectus. Sed ultrices condimentum dui, eu auctor metus condimentum vitae. Nulla magna purus, cursus eget sodales at, ullamcorper at nunc. Nulla dignissim lobortis nulla, quis euismod felis tempor ac. Integer accumsan dictum consequat. Aenean faucibus erat neque. Vestibulum sed urna id libero aliquet suscipit. Nulla facilisi.</div>
+    <div class="container-fluid mt-4">
+        <h1 class="titles">Titre de l'article</h1>
     </div>
-</div>
+
+    <div class="container mt-3 mb-5">
+        <div class="article">
+            <div class="credit">Publié par <span class="user">user</span>  le 07.01.2020 </div>
+
+            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src="{{ article.image }}"></div>
+            <div class="mt-5 ml-5 mr-5 content">{{ article.content }}</div>
+        </div>
+    </div>
 
 {%  endblock %}
+

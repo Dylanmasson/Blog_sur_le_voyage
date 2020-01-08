@@ -13,7 +13,7 @@ articles:
   controller: App\Controller\ArticleController::articlesAction
 
 article:
-  path: /article/{slug}
+  path: /{country}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
 navbar:
