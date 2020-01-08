@@ -3,42 +3,43 @@
 
 {% block body %}
 
-    <h2 class="upc">Modification d'un article</h2>
+    <div class="container">
+
+    <h2 class="titres mt-3">Modification d'un article</h2>
 
     {{ form_start(formArticle) }}
 
-    <div class="container">
-        <div class="row mt-5">
+        <div class="row mt-3">
             <div class="col-8">
-                {{ form_row(formArticle.title, {'attr': {'class': 'form-control', 'placeholder' : "Titre de l'article"}}) }}
+                {{ form_row(formArticle.title, {'attr': {'class': 'form-control', 'placeholder' : "Titre de l'article"}, 'label': 'Titre de l\'article'}) }}
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-5">
-                {{ form_row(formArticle.tags, {'attr': {'class': 'form-control', 'placeholder' : "Vos tags"}}) }}
+                {{ form_row(formArticle.tags, {'attr': {'class': 'form-control', 'placeholder' : "Vos tags"}, 'label': 'Tags'}) }}
             </div>
             <div class="col-3">
-                {{ form_row(formArticle.category, {'attr': {'class': 'form-control', 'placeholder' : "Catégorie"}}) }}
+                {{ form_row(formArticle.category, {'attr': {'class': 'form-control'}, 'label': 'Choisir la catégorie'}) }}
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-4">
-                {{ form_row(formArticle.country, {'attr': {'class': 'form-control','placeholder' : "Le pays correspondant" }}) }}</div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-8">
-                {{ form_row(formArticle.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu de l\'article'}})
-                }}
+                {{ form_row(formArticle.country, {'attr': {'class': 'form-control'}, 'label': 'Choisir le pays'}) }}
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-8">
-                {{ form_row(formArticle.image, {'attr': {'class': 'form-control-file', 'placeholder' : "Inserez votre image"}, 'label_attr': {'class': 'mr-3'}})
+                {{ form_row(formArticle.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu de l\'article'},  'label': 'Contenu de l\'article'}) }}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-8">
+                {{ form_row(formArticle.image, {'attr': {'class': 'form-control-file', 'placeholder' : ' Inserez votre image'}, 'label_attr': {'class': 'mr-3'}, 'label': 'Image de l\'article'})
                 }}
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-4">
             <div class="col-8"> <button type="submit" class="btn btn-info btn-block">Modifier l'article</button></div>
         </div>
 
@@ -46,5 +47,4 @@
 
     {{ form_end(formArticle) }}
 
-    </div>
 {% endblock %}
