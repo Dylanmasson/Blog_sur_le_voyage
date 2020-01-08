@@ -20,8 +20,11 @@
     "doctrine/common": {
         "version": "v2.11.0"
     },
+    "doctrine/data-fixtures": {
+        "version": "1.4.0"
+    },
     "doctrine/dbal": {
-        "version": "v2.10.1"
+        "version": "v2.10.0"
     },
     "doctrine/doctrine-bundle": {
         "version": "2.0",
@@ -36,6 +39,18 @@
             "config/packages/prod/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "fc52d86631a6dfd9fdf3381d0b7e3df2069e51b3"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
@@ -88,22 +103,22 @@
         ]
     },
     "egulias/email-validator": {
-        "version": "2.1.14"
+        "version": "2.1.11"
+    },
+    "fzaninotto/faker": {
+        "version": "v1.9.1"
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
-    "laminas/laminas-code": {
-        "version": "3.4.1"
+    "knplabs/knp-components": {
+        "version": "v2.3.1"
     },
-    "laminas/laminas-eventmanager": {
-        "version": "3.2.1"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.0.1"
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.0.0"
     },
     "monolog/monolog": {
-        "version": "2.0.2"
+        "version": "2.0.1"
     },
     "nikic/php-parser": {
         "version": "v4.3.0"
@@ -112,7 +127,7 @@
         "version": "1.5.1"
     },
     "ocramius/proxy-manager": {
-        "version": "2.6.0"
+        "version": "2.2.3"
     },
     "php": {
         "version": "7.4"
@@ -121,7 +136,7 @@
         "version": "2.0.0"
     },
     "phpdocumentor/reflection-docblock": {
-        "version": "4.3.4"
+        "version": "4.3.2"
     },
     "phpdocumentor/type-resolver": {
         "version": "1.0.1"
@@ -235,7 +250,7 @@
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.0",
-            "ref": "c0eeb50665f0f77226616b6038a9b06c03752d8e"
+            "ref": "19fa03bacd9a6619583d1e4939da4388df22984d"
         },
         "files": [
             ".env"
@@ -519,15 +534,18 @@
         "version": "v5.0.2"
     },
     "twig/extra-bundle": {
-        "version": "v3.0.1"
+        "version": "v3.0.0"
     },
     "twig/twig": {
-        "version": "v3.0.1"
-    },
-    "webimpress/safe-writer": {
-        "version": "2.0.0"
+        "version": "v3.0.0"
     },
     "webmozart/assert": {
         "version": "1.6.0"
+    },
+    "zendframework/zend-code": {
+        "version": "3.4.1"
+    },
+    "zendframework/zend-eventmanager": {
+        "version": "3.2.1"
     }
 }

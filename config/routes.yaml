@@ -1,3 +1,38 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+
+# Partie "publique"
+home:
+  path: /
+  controller: App\Controller\HomeController::homeAction
+
+articles:
+  path: /country/{slug}
+  controller: App\Controller\ArticleController::articlesAction
+
+article:
+  path: /article/{slug}
+  controller: App\Controller\ArticleController::articleAction
+
+navbar:
+  path: /navbar
+  controller: App\Controller\NavbarController::homeAction
+
+
+# Partie administration
+dashboard_home:
+  path: /dashboard/home
+  controller: App\Controller\AdminController::homeAction
+
+
+
+# Formulaires
+form_article:
+  path: /dashboard/formulaire-article
+  controller: App\Controller\ArticleFormController::form
+
+form_inscription:
+  path: /inscription
+  controller: App\Security\SecurityController::registration
