@@ -51,7 +51,37 @@ class ArticleFormController extends AbstractController
 /*            return $this->redirectToRoute('articles', ['id' => $article->getId()]); */
             return $this->redirectToRoute('dashboard_home');
         }
-        return $this->render('dashboard/form/article_form.html.twig');
+        return $this->render('dashboard/form/article_form.html.twig', ["formArticle" => $formArticle->createView()]);
+    }
+
+
+    public function updateArticleAction(Request $request, EntityManagerInterface $manager, Security $security, $id)
+    {
+        $slugger = new AsciiSlugger();
+        $article = $this->articleRepository->find($id);
+
+        $formArticle = $this->createForm(ArticleFormType::class, $article);
+        $formArticle->handleRequest($request);
+
+        if ($formArticle->isSubmitted() && $formArticle->isValid()){
+            $article = $formArticle->getData();
+            $actualTitle = $article->getTitle();
+            $slug = strtolower($slugger->slug($actualTitle));
+            $article->setSlug($slug);
+            if (!$article->getId()){
+                $article->setCreatedAt(new \DateTime());
+            }
+            $user = $this->userRepository->findOneBy(['email' => $security->getUser()->getEmail()]);
+            $article->setUser($user);
+
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($article);
+            $manager->flush();
+
+            /*            return $this->redirectToRoute('articles', ['id' => $article->getId()]); */
+            return $this->redirectToRoute('dashboard_home');
+        }
+        return $this->render('dashboard/form/update_article_form.html.twig', ["formArticle" => $formArticle->createView()]);
     }
 
 

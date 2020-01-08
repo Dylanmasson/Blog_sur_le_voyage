@@ -33,6 +33,10 @@ form_article:
   path: /dashboard/formulaire-article
   controller: App\Controller\ArticleFormController::form
 
+update_article:
+  path: /dashboard/formulaire-article/modifier/{id}
+  controller: App\Controller\ArticleFormController::updateArticleAction
+
 form_inscription:
   path: /inscription
   controller: App\Security\SecurityController::registration
