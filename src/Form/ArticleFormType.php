@@ -26,7 +26,6 @@ class ArticleFormType extends AbstractType
                 ]
             ])
             ->add('image')
-           /* ->add('created_at')*/
             ->add('category', EntityType::class, [
                 'class' => Category::class, 'choice_label' => 'name'
             ])

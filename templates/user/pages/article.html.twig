@@ -28,7 +28,7 @@
 
     <div class="container">
 
-    <h2>Ajouter un commentaire</h2>
+        <h2>Ajouter un commentaire</h2>
 
         {{ form_start(formComment) }}
 
@@ -37,7 +37,10 @@
                 {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': 'Votre commentaire:'}) }}
             </div>
         </div>
+        
     </div>
+
     {{ form_end(formComment) }}
+
 {%  endblock %}
 
