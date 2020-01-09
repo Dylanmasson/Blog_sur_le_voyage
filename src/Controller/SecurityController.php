@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Security;
+namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -15,27 +15,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/inscription", name="security_registration")
-     */
-    public function registration(Request $request, EntityManagerInterface $entityManager){
-
-        $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($user);
-            $entityManager->flush();
-        }
-        return $this->render('security/registration.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
 
     /**
      * @Route("/login", name="app_login")
      */
-   public function login(AuthenticationUtils $authenticationUtils): Response
+   public function login(AuthenticationUtils $authenticationUtils)
     {
         // if ($this->getUser()) {
         //     return $this->redirectToRoute('target_path');

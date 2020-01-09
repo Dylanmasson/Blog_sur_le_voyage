@@ -39,4 +39,4 @@ update_article:
 
 form_inscription:
   path: /inscription
-  controller: App\Security\SecurityController::registration
+  controller: App\Security\RegistrationController::registration
