@@ -43,3 +43,4 @@ class ArticleFormType extends AbstractType
         ]);
     }
 }
+
