@@ -21,8 +21,8 @@
         <div class="article">
             <div class="credit">Publié par <span class="user">user</span>  le 07.01.2020 </div>
 
-            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src="{{ article.image }}"></div>
-            <div class="mt-5 ml-5 mr-5 content">{{ article.content }}</div>
+            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src="{{ article.image }}" alt="Image de l'article"></div>
+            <div class="mt-5 ml-5 mr-5 content">{{ article.content|raw }}</div>
         </div>
     </div>
 
