@@ -3,29 +3,59 @@
 
 {% block styles %}
     <link rel="stylesheet" href="{{ asset('stylesheet/user_style/article_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('stylesheet/user_style/comment_style.css') }}">
 {% endblock %}
 
 
 {% block body %}
     <div class="container">
         <div class="article">
-            <div class="category mt-5"> category </div>
-            <div class="tags mt-2"> {{ article.tags }} </div>
+            <div class="category mt-5"> {{ article.category.name }} </div>
+            <div class="tags mt-2"> {{article.tags}} </div>
         </div>
     </div>
 
     <div class="container-fluid mt-4">
-        <h1 class="titles">Titre de l'article</h1>
+        <h1 class="titles">{{ article.title }}</h1>
     </div>
 
     <div class="container mt-3 mb-5">
         <div class="article">
-            <div class="credit">Publié par <span class="user">user</span>  le 07.01.2020 </div>
-
-            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src="{{ article.image }}" alt="Image de l'article"></div>
-            <div class="mt-5 ml-5 mr-5 content">{{ article.content|raw }}</div>
+            <div class="credit">Publié par <span class="user">{{article.user.username}}</span>  {{ article.created_at|date("d/m/Y") }} </div>
+            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src=" {{article.image}} " alt="image de l'article"></div>
+            <div class="mt-5 ml-5 mr-5 content"> {{article.content|raw}} </div>
         </div>
     </div>
+
+
+    <div id="conteneur">
+        <ul>
+            <div id="myNav" class="overlay">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav('myNav')">&times;</a>
+                <div class="overlay-content">
+                    <h2>Commentaires</h2>
+                    <div id = "cadre1">
+                    </div>
+                    <br>
+                    <div id = "cadre1">
+                    </div>
+                    <br>
+                    <div id = "cadre1">
+                    </div>
+
+                    <a href=""><button class="button">Commentaire</button></a>
+                </div>
+            </div>
+            <div class="affichecom">
+                <span style="font-size:30px;cursor:pointer" onclick="openNav('myNav')"><button class="button">Voir les commentaires</button></span>
+            </div>
+        </ul>
+    </div>
+{%  endblock %}
+
+{% block scripts %}
+    <script src="{{ asset('script/comment_script.js') }}"></script>
+{% endblock %}
 
     <div class="container">
 
@@ -44,3 +74,4 @@
     {{ form_end(formComment) }}
 
 {%  endblock %}
+
