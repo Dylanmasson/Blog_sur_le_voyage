@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="{{ asset('stylesheet/user_style/article_style.css') }}">
 {% endblock %}
 
+
 {% block body %}
     <div class="container">
         <div class="article">
@@ -21,14 +22,14 @@
         <div class="article">
             <div class="credit">Publié par <span class="user">user</span>  le 07.01.2020 </div>
 
-            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src="{{ article.image }}"></div>
-            <div class="mt-5 ml-5 mr-5 content">{{ article.content }}</div>
+            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src="{{ article.image }}" alt="Image de l'article"></div>
+            <div class="mt-5 ml-5 mr-5 content">{{ article.content|raw }}</div>
         </div>
     </div>
 
     <div class="container">
 
-    <h2>Ajouter un commentaire</h2>
+        <h2>Ajouter un commentaire</h2>
 
         {{ form_start(formComment) }}
 
@@ -37,7 +38,9 @@
                 {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': 'Votre commentaire:'}) }}
             </div>
         </div>
-    </div>
-    {{ form_end(formComment) }}
-{%  endblock %}
 
+    </div>
+
+    {{ form_end(formComment) }}
+
+{%  endblock %}

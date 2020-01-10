@@ -4,10 +4,10 @@
     "require": {
         "php": "^7.2.5",
         "ext-ctype": "*",
-        "ext-http": "*",
         "ext-iconv": "*",
         "fzaninotto/faker": "^1.9",
         "knplabs/knp-paginator-bundle": "^5.0",
+        "php-http/curl-client": "^2.1",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "5.0.*",
         "symfony/console": "5.0.*",
@@ -21,7 +21,7 @@
         "symfony/mailer": "5.0.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/notifier": "5.0.*",
-        "symfony/orm-pack": "*",
+        "symfony/orm-pack": "^1.0",
         "symfony/process": "5.0.*",
         "symfony/security-bundle": "5.0.*",
         "symfony/serializer-pack": "*",
@@ -35,7 +35,7 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/debug-pack": "*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.14",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*"
     },
@@ -67,6 +67,7 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
+            "ckeditor:install --clear=drop": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
