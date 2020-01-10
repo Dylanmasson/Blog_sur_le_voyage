@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('stylesheet/user_style/comment_style.css') }}">
 {% endblock %}
 
+
 {% block body %}
     <div class="container">
         <div class="article">
@@ -21,12 +22,11 @@
     <div class="container mt-3 mb-5">
         <div class="article">
             <div class="credit">Publié par <span class="user">{{article.user.username}}</span>  {{ article.created_at|date("d/m/Y") }} </div>
-
             <div class="image mt-5" style="width: 500px"><img class="card-img-top" src=" {{article.image}} " alt="image de l'article"></div>
             <div class="mt-5 ml-5 mr-5 content"> {{article.content|raw}} </div>
         </div>
     </div>
-    <h2>Ajouter un commentaire</h2>
+
 
     <div id="conteneur">
         <ul>
@@ -56,4 +56,22 @@
 {% block scripts %}
     <script src="{{ asset('script/comment_script.js') }}"></script>
 {% endblock %}
+
+    <div class="container">
+
+        <h2>Ajouter un commentaire</h2>
+
+        {{ form_start(formComment) }}
+
+        <div class="row mt-3">
+            <div class="col-8">
+                {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': 'Votre commentaire:'}) }}
+            </div>
+        </div>
+
+    </div>
+
+    {{ form_end(formComment) }}
+
+{%  endblock %}
 

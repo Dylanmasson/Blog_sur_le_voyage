@@ -13,6 +13,7 @@ use App\Repository\CountryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\String\Slugger\AsciiSlugger;
+use Doctrine\Common\Persistence\ObjectManager;
 
 class ArticleController extends AbstractController
 {
@@ -25,6 +26,7 @@ class ArticleController extends AbstractController
     {
         $this->articleRepository = $articleRepository;
         $this->countryRepository = $countryRepository;
+        $this->commentRepository = $countryRepository;
     }
 
 
@@ -40,15 +42,8 @@ class ArticleController extends AbstractController
         if(is_null($from) || $from < 1) {
             $from = 1;
         }
-        //Creation du formulaire
-        /* public function createForm(Request $request, ObjectManager $manager){
 
-             $comment = new Comment();
-             $form = $this->createForm(CommentFormType::class, $comment);
-             return $this->render('user/pages/article/{slug}',[
-                "form" => $form->createView()
-             ]);
-        } */
+
 
 
         return $this->render('user/pages/country.html.twig', [
@@ -56,11 +51,23 @@ class ArticleController extends AbstractController
         "slug" => $slug,
         ]);
     }
+
+     public function CommentForm(Request $request, ObjectManager $manager){
+
+                 $comment = new Comment();
+                 $formComment = $this->createForm(CommentFormType::class, $comment);
+
+
+     }
     public function articleAction($slug){
 
         $article = $this->articleRepository->findOneBy(["slug" => $slug]);
+
+                 $comment = new Comment();
+                 $formComment = $this->createForm(CommentFormType::class, $comment);
+
         return $this->render('user/pages/article.html.twig', [
-        "article" => $article
+        "article" => $article,  "formComment" => $formComment->createView()
 
         ]);
 }
