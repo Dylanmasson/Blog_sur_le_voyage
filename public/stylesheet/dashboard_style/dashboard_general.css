@@ -1,0 +1,25 @@
+body{
+    font-family: 'Quicksand', sans-serif;
+}
+
+.upc{
+    text-transform: uppercase;
+}
+
+a{
+    color: white;
+}
+
+a:hover{
+    color: lightgrey;
+}
+
+.nav {
+    background-color: #87B761;
+    min-height: 100vh;
+}
+
+.top-bar{
+    background-color: #3a3a3a;
+    height: 50px;
+}
