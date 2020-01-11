@@ -51,11 +51,6 @@
             </div>
         </ul>
     </div>
-{%  endblock %}
-
-{% block scripts %}
-    <script src="{{ asset('script/comment_script.js') }}"></script>
-{% endblock %}
 
     <div class="container">
 
@@ -74,4 +69,8 @@
     {{ form_end(formComment) }}
 
 {%  endblock %}
+
+{% block scripts %}
+    <script src="{{ asset('script/comment_script.js') }}"></script>
+{% endblock %}
 
