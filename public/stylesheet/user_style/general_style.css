@@ -4,12 +4,10 @@
     body{
     font-family: 'Quicksand', sans-serif;
     color: #616161;
-    text-align: justify;
 }
 
-    /* Style liens (couleur) */
-    a {
-        color: white;
+    a{
+        color: #616161;
     }
 
     /* Style liens:hover (couleur) */
@@ -51,6 +49,24 @@ h2{
     font-size: 2em;
     padding: 8px;
 }
+
+h3{
+    font-size: 1.5em;
+    text-align: center;
+}
+
+a .lien{
+    color: #616161;
+}
+
+    .lien a:hover{
+        color: #5eb5e0;
+    }
+
+.lien{
+    text-align: center;
+}
+
 
 /* FOOTER */
 

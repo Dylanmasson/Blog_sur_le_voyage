@@ -4,39 +4,54 @@
 
 
 # Partie "publique"
+
+# page de la home
 home:
   path: /
   controller: App\Controller\HomeController::homeAction
 
+# page du continent
+continent:
+  path: /continent/{name}
+  controller: App\Controller\ContinentController::continentAction
+
+# page du pays et des articles par pays
 articles:
   path: /country/{slug}
   controller: App\Controller\ArticleController::articlesAction
 
+# page d'un article
 article:
   path: /{country}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
+# navbar
 navbar:
   path: /navbar
   controller: App\Controller\NavbarController::homeAction
 
 
 # Partie administration
+
+# page home du dashboard
 dashboard_home:
   path: /dashboard/home
   controller: App\Controller\AdminController::homeAction
 
 
-
 # Formulaires
+
+# page création d'article
 form_article:
   path: /dashboard/formulaire-article
   controller: App\Controller\ArticleFormController::form
 
+# page update d'article
 update_article:
   path: /dashboard/formulaire-article/modifier/{id}
   controller: App\Controller\ArticleFormController::updateArticleAction
 
+# Page formulaire d'inscription
 form_inscription:
   path: /inscription
   controller: App\Security\RegistrationController::registration

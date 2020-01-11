@@ -18,8 +18,19 @@
 
     <h2 class="titles mt-5">Visitez notre site</h2>
 
-    <h2 class="titles mt-5">Les derniers articles</h2>
+    <div class="container">
 
+        <h3 class="mt-5">Les continents</h3>
+
+        {% for continent in continents %}
+        <div class="lien">
+            <a href="{{ path('continent', {name: continent.name}) }}"> <div>{{ continent.name }}</div> </a>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <h2 class="titles mt-5">Les derniers articles</h2>
 
 
 {% endblock %}

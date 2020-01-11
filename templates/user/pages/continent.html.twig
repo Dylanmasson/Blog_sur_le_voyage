@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1 class="titles mt-5"> {{name}} </h1>
+
+<div class="container">
+
+    {% for country in countries %}
+    <div class="lien">
+        <a href="{{ path('articles',{slug:country.slug})}}"> <div>{{ country.name }}</div> </a>
+    </div>
+    {% endfor %}
+
+{% endblock %}
