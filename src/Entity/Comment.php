@@ -26,7 +26,7 @@ class Comment
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    public $created_at;
 
     /**
      * @ORM\Column(type="boolean", options={"default" =0})
