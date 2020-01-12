@@ -5,6 +5,8 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/doctrine-migrations-bundle": "^2.0",
+        "friendsofsymfony/ckeditor-bundle": "^2.2",
         "fzaninotto/faker": "^1.9",
         "knplabs/knp-paginator-bundle": "^5.0",
         "php-http/curl-client": "^2.1",
