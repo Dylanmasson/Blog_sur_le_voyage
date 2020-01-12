@@ -1,0 +1,25 @@
+twig:
+  form_themes:
+    - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+fos_ck_editor:
+  configs:
+    my_config_1:
+      toolbar: "my_toolbar_1"
+      uiColor: "#76b7cc"
+      language: fr
+
+  toolbars:
+    configs:
+      my_toolbar_1: [ "@document", "@clipboard", "@editing", "/", "@basicstyles", "@paragraph", "@links", "/", "@styles", "@colors", "@insert", "@tools"]
+    items:
+      document: [ "NewPage", "-", "Preview" ]
+      clipboard: [ "Cut", "Copy", "-", "Paste", "PasteText", "PasteFromWord", "-", "Undo", "Redo" ]
+      editing: [ "SelectAll", "-", "Scayt" ]
+      basicstyles: [ "Bold", "Italic", "Underline", "-", "RemoveFormat" ]
+      paragraph: [ "NumberedList", "BulletedList", "Blockquote", "-", "JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock" ]
+      links: ["Link", "Unlink"]
+      styles: [ "Format", "FontSize" ]
+      colors: [ "TextColor", "BGColor" ]
+      insert: [ "Image", "-", "Smiley", "HorizontalRule" ]
+      tools: [ "Maximize" ]

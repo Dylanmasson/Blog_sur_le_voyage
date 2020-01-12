@@ -1,0 +1,104 @@
+@keyframes bounce{
+    from {transform: translateY(0);}
+    to   {transform: translateY(-10px);}
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    background-color: #76b7cc;
+    background-color: rgba(118, 183, 204, 0.5);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: white;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+    }
+}
+
+.button {
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: white;
+    background-color: #76b7cc;
+    border: none;
+}
+
+.button:hover {background-color: #76b7cc}
+
+.button:active {
+    background-color: #76b7cc;
+    box-shadow: 0 5px #76b7cc;
+    transform: translateY(4px);
+}
+#conteneur {
+    display: flex;
+    justify-content: space-around;
+}
+
+h1{
+    text-align: center;
+    font-size: 400%;
+    background-color: rgba(135, 183, 97, 0.7);
+}
+
+h2{
+    color: white;
+    font-size: 200%;
+}
+
+p{
+    text-align: center;
+}
+
+#cadre1
+{
+    text-align: center;
+    overflow: hidden;
+    margin: 5%;
+    margin-right: 0%;
+    margin-left: 0%;
+    padding: 4%;
+    width:1200px;
+    min-height:100%;
+    margin:auto;
+    background-color: white;
+}

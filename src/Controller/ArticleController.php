@@ -12,7 +12,6 @@ use App\Repository\CommentRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class ArticleController extends AbstractController
 {
     private $articleRepository;
@@ -29,20 +28,15 @@ class ArticleController extends AbstractController
         $this->userRepository = $userRepository;
     }
 
-
-
     public function articlesAction(Request $request, $slug){
         $from = $request->query->get("from");
-
 
         //recuperer le country a patir du slug
         $country = $this->countryRepository->findOneBy(["slug" => $slug]);
         $articles = $this->articleRepository->findBy(["country" => $country]);
-
         if(is_null($from) || $from < 1) {
             $from = 1;
         }
-
 
         return $this->render('user/pages/country.html.twig', [
             "articles" => $articles,
@@ -59,6 +53,7 @@ class ArticleController extends AbstractController
         $formComment->handleRequest($request);
 
         if($formComment->isSubmitted() && $formComment->isValid()){
+
             $comment = $formComment->getData();
             $user = $this->userRepository->findOneBy(['id' => $security->getUser()->getId()]);
             $comment->setUser($user)
@@ -67,8 +62,6 @@ class ArticleController extends AbstractController
                     ->setIsVisible(true)
                     ->setArticle($article);
 
-
-            /* $article = $this->articleRepository->findOneBy(['id' = $id]); */
 
 
             $manager = $this->getDoctrine()->getManager();
