@@ -55,3 +55,12 @@ update_article:
 form_inscription:
   path: /inscription
   controller: App\Security\RegistrationController::registration
+
+
+page_user:
+  path: /user/{username}
+  controller: App\Controller\UserController::homeAction
+
+article_user:
+  path: /{user}/article/{article}
+  controller: App\Controller\ArticleController::articleAction
