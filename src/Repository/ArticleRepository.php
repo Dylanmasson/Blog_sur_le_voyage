@@ -59,6 +59,14 @@ class ArticleRepository extends ServiceEntityRepository
         return $paginator;
     }
 
+    public function findLastFourArticles(){
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.created_at', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
+
   
 
 
