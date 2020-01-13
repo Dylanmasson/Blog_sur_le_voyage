@@ -62,5 +62,5 @@ page_user:
   controller: App\Controller\UserController::homeAction
 
 article_user:
-  path: /{user}/article/{article}
+  path: /{user}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
