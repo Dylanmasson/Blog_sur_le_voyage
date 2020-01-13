@@ -35,7 +35,6 @@ class ArticleRepository extends ServiceEntityRepository
 
     }
 
-
   /*   public function findArticlesByCountry(Country $country){
 
         $query = $this->createQueryBuilder('a')
@@ -43,11 +42,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->andWhere('a.country = :country')
             ->getQuery()
             ->getResult();
-
-
     } */
-
-
 
     private function paginate($dql, $page = 1, $limit = 6)
     {
@@ -59,10 +54,10 @@ class ArticleRepository extends ServiceEntityRepository
         return $paginator;
     }
 
-    public function findLastFourArticles(){
+    public function findLastThreeArticles(){
         return $this->createQueryBuilder('a')
             ->orderBy('a.created_at', 'DESC')
-            ->setMaxResults(4)
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult();
     }

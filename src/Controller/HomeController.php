@@ -22,16 +22,13 @@ class HomeController extends AbstractController
         $this->continentRepository = $continentRepository;
         $this->articleRepository = $articleRepository;
         $this->countryRepository = $countryRepository;
-
-
     } 
     
-    public function homeAction($slug, Security $security){
+    public function homeAction(Security $security){
         $continents = $this->continentRepository->findAll();
-        $country = $this->countryRepository->findAll();
-        $articles = $this->articleRepository->findLastFourArticles();
-        $article = $this->articleRepository->findOneBy(["slug" => $slug]);
-        return $this->render('home.html.twig', ["continents" => $continents, "articles"=> $articles, "article" => $article, "country" => $country]);
+        $articles = $this->articleRepository->findLastThreeArticles();
+
+        return $this->render('home.html.twig', ["continents" => $continents, "articles" => $articles]);
     }
 
 /* 
@@ -43,17 +40,6 @@ class HomeController extends AbstractController
         return $this->render('home.html.twig', ["countries" => $countries, "continents" => $continents]);
 
     } */
-
-
-    public function article($slug)
-    {
-        return $this->render('pages/article.html.twig', []);
-    }
-
-    public function index(){
-
-
-    }
 
 
 }
