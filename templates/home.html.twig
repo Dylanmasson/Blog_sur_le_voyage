@@ -3,10 +3,11 @@
 {% block body %}
 
     {% if app.user %}
-
-    <p class="ml-4 mt-4">Connecté en tant que : {{ user.username }}</p>
-
+    <p class="ml-4 mt-4">Connecté en tant que : {{ app.user.username }}</p>
+    {% else %}
+    <p class="ml-4 mt-4">Vous n'etes pas connecté</p>
     {% endif %}
+
 
 <h1 class="titles mt-5">The Traveller's Guide to the World</h1>
 
