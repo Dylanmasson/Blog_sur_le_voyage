@@ -35,6 +35,17 @@ class ArticleRepository extends ServiceEntityRepository
 
     }
 
+    public function findByCategoryAndCountry($category, $country)
+    {
+        return $this->createQueryBuilder('a')
+            ->Where('a.category LIKE :category')
+            ->andWhere('a.country = :country')
+            ->setParameter('category', $category)
+            ->setParameter('country', $country)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
   /*   public function findArticlesByCountry(Country $country){
 
@@ -59,7 +70,6 @@ class ArticleRepository extends ServiceEntityRepository
         return $paginator;
     }
 
-  
 
 
 

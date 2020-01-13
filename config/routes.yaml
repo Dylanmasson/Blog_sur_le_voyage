@@ -20,6 +20,15 @@ articles:
   path: /country/{slug}
   controller: App\Controller\ArticleController::articlesAction
 
+category:
+  path: /{slug}/articles/{category}
+  controller: App\Controller\ArticleController::articlesAction
+
+article_user:
+  path: /{user}/article/{article}
+  controller: App\Controller\ArticleController::articleAction
+
+
 # page d'un article
 article:
   path: /{country}/article/{slug}
@@ -61,6 +70,4 @@ page_user:
   path: /user/{username}
   controller: App\Controller\UserController::homeAction
 
-article_user:
-  path: /{user}/article/{article}
-  controller: App\Controller\ArticleController::articleAction
+
