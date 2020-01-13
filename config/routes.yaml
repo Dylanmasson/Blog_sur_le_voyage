@@ -25,7 +25,7 @@ category:
   controller: App\Controller\ArticleController::articlesAction
 
 article_user:
-  path: /{user}/article/{article}
+  path: /{user}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
 
