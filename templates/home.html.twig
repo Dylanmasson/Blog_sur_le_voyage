@@ -23,11 +23,11 @@
 
     </div>
 
-    <h2 class="titles mt-5">Visitez notre site</h2>
+    <h2 class="titles mt-5">Carte du monde</h2>
 
     <div class="container">
 
-        <h3 class="mt-5">Les continents</h3>
+        {% include 'user/component/map.html.twig' %}
 
         {% for continent in continents %}
         <div class="lien">
