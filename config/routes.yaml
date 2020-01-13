@@ -25,6 +25,11 @@ article:
   path: /{country}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
+# page d'un article à partir de la home
+last_articles:
+  path: /article/{slug}
+  controller: App\Controller\ArticleController::articleAction
+
 # navbar
 navbar:
   path: /navbar
