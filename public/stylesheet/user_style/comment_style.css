@@ -10,8 +10,7 @@
     z-index: 10;
     left: 0;
     top: 0;
-    background-color: #76b7cc;
-    background-color: rgba(118, 183, 204, 0.5);
+    background-color: rgba(118, 183, 204, 0.9);
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -54,12 +53,13 @@
 
 .button {
     font-size: 24px;
-    text-align: center;
+    margin: auto;
     cursor: pointer;
     outline: none;
     color: white;
     background-color: #76b7cc;
     border: none;
+    padding: 5px 10px;
 }
 
 .button:hover {background-color: #76b7cc}
@@ -72,33 +72,4 @@
 #conteneur {
     display: flex;
     justify-content: space-around;
-}
-
-h1{
-    text-align: center;
-    font-size: 400%;
-    background-color: rgba(135, 183, 97, 0.7);
-}
-
-h2{
-    color: white;
-    font-size: 200%;
-}
-
-p{
-    text-align: center;
-}
-
-#cadre1
-{
-    text-align: center;
-    overflow: hidden;
-    margin: 5%;
-    margin-right: 0%;
-    margin-left: 0%;
-    padding: 4%;
-    width:1200px;
-    min-height:100%;
-    margin:auto;
-    background-color: white;
 }
