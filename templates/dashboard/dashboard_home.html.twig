@@ -3,7 +3,7 @@
 {% block body %}
 
     <h1 class="upc">Liste des articles</h1>
-
+    {% if user %}
     <table class="table container mt-5">
         <thead>
         <tr>
@@ -29,5 +29,6 @@
         {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 
 {% endblock %}

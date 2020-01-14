@@ -50,7 +50,7 @@ article_user:
 
 # page home du dashboard
 dashboard_home:
-  path: /dashboard/home
+  path: /dashboard/{username}
   controller: App\Controller\AdminController::homeAction
 
 
