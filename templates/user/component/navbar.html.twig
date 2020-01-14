@@ -16,7 +16,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for continent in continents %}
-                        <span class="dropdown-item continents">{{continent.name}}</span>
+                        <a class="dropdown-item" href="{{ path('continent', {name:continent.name}) }}" style="background-color: #76b7cc">{{continent.name}}</a>
 
                         <div class="dropdown-divider"></div>
                         {% for country in continent.countries %}

@@ -67,6 +67,7 @@ dashboard_home:
   controller: App\Controller\AdminController::homeAction
 
 
+
 # Formulaires
 
 # page création d'article
