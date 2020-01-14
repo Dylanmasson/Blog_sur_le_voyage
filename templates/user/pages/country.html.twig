@@ -7,10 +7,9 @@
     <div class="container mb-5">
 
     {{ dump(articles) }}
-
     {{ dump(categories) }}
     {{ dump(country) }}
-    {{ dump(art) }}
+
     <div class="btn-group">
         <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choisissez une catégorie
@@ -22,7 +21,7 @@
 
             {% for category in categories %}
 
-                <a class="dropdown-item" href="{{ path('category',{slug:country.slug, category: category.id}) }}">{{category.name}}</a>
+                <a class="dropdown-item" href="{{ path('category',{slug: country.slug, category:category.slug}) }}">{{category.name}}</a>
 
             {% endfor %}
         </div>

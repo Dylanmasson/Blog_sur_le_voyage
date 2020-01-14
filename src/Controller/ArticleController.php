@@ -40,7 +40,11 @@ class ArticleController extends AbstractController
         $country = $this->countryRepository->findOneBy(["slug" => $slug]);
         $articles = $this->articleRepository->findBy(["country" => $country]);
         $categories = $this->categoryRepository->findAll();
-        $art = $this->articleRepository->findAll(["articles" => $articles, "categories" => $categories]);
+        //$category = $this->categoryRepository->findOneBy(["categories" => $categories]);
+        //$article =$this->articleRepository->findBy(["country" => $country, "category" => $category]);
+     /*  foreach ($articles as $articleCategory){
+           $articleCategory = $this->articleRepository->findBy(["categories" => $categories]);
+        }*/
         //$category = $this->categoryRepository->findOneById($id);
 
 
@@ -49,9 +53,10 @@ class ArticleController extends AbstractController
             "slug" => $slug,
             "categories" => $categories,
             "country" => $country,
-            "art" => $art
+
         ]);
     }
+
 
 
     public function articleAction($slug, Request $request, Security $security){
@@ -77,6 +82,5 @@ class ArticleController extends AbstractController
             "article" => $article, "comment" => $comment,  "formComment" => $formComment->createView()
         ]);
     }
-
 
 }
