@@ -38,10 +38,25 @@ article:
   path: /{country}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
+# page d'un article à partir de la home
+last_articles:
+  path: /article/{slug}
+  controller: App\Controller\ArticleController::articleAction
+
 # navbar
 navbar:
   path: /navbar
   controller: App\Controller\NavbarController::homeAction
+
+# page user
+page_user:
+  path: /user/{username}
+  controller: App\Controller\UserController::homeAction
+
+# page article user
+article_user:
+  path: /{user}/article/{slug}
+  controller: App\Controller\ArticleController::articleAction
 
 
 # Partie administration
@@ -68,10 +83,4 @@ update_article:
 form_inscription:
   path: /inscription
   controller: App\Security\RegistrationController::registration
-
-
-page_user:
-  path: /user/{username}
-  controller: App\Controller\UserController::homeAction
-
 

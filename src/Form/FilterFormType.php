@@ -2,30 +2,33 @@
 
 namespace App\Form;
 
-use App\Entity\Comment;
-use Doctrine\DBAL\Types\BooleanType;
-use Faker\Provider\DateTime;
+use App\Entity\Category;
+use App\Model\Filter;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use function Sodium\add;
 
-class CommentFormType extends AbstractType
+
+class FilterFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content')
-            ->add('envoyer', SubmitType::class);
+            ->add('category', EntityType::class, [
+                'required' => false,
+                'class' => Category::class,
+                'choice_label' => 'name'
+            ])
+            ->getForm();
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Comment::class,
+            'data_class' => Filter::class,
         ]);
     }
 }
+

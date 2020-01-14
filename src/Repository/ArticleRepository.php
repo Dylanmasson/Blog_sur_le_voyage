@@ -3,16 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Article;
-use App\Entity\Category;
-use App\Entity\Continent;
-use App\Entity\Country;
-use App\model\SearchModel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\Tools\Pagination\Paginator;
-use phpDocumentor\Reflection\Types\Null_;
-use Symfony\Component\String\Slugger\AsciiSlugger;
-use Doctrine\ORM\EntityRepository;
+
 /**
  * @method Article|null find($id, $lockMode = null, $lockVersion = null)
  * @method Article|null findOneBy(array $criteria, array $orderBy = null)
@@ -26,64 +19,29 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findPaginatedArticles(Country $country){
-
-        // Create our query
-        $query = $this->createQueryBuilder('p')
-            ->orderBy('p.created_at', 'DESC')
-            ->andWhere('a.country = :country')
-            ->getQuery();
-
-        // No need to manually get get the result ($query->getResult())
-        $pages = $this->paginate($query, $country);
-        return $pages;
-
-    }
-
-    public function searchArticle(SearchModel $search)
+    public function findLastThreeArticles()
     {
-
-        $qb = $this->createQueryBuilder('a');
-
-            if ($search->getCategory()->getId() !== null && $search->getCountry()->getId() !== null) {
-                $qb
-
-                        ->Where('a.category = :category')
-                        ->andWhere('a.country = :country')
-                        ->setParameter(['category' => $search->getCategory()->getId(),
-                            "country" => $search->getCountry()->getId()]);
-            }
-            return $qb->getQuery()
-                      ->getResult();
-
-
-    }
-
-  /*   public function findArticlesByCountry(Country $country){
-
-        $query = $this->createQueryBuilder('a')
+        return $this->createQueryBuilder('a')
             ->orderBy('a.created_at', 'DESC')
-            ->andWhere('a.country = :country')
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult();
+    }
 
-
-    } */
-
-
-
-    private function paginate($dql, $page = 1, $limit = 6)
+    public function filteredArticles(\App\Model\Filter $filter)
     {
-        $paginator = new Paginator($dql);
-        $paginator->getQuery()
-            ->setFirstResult( ($page - 1) * $limit) // Offset
-            ->setMaxResults($limit); // Limit
-
-        return $paginator;
-    }}
-
-
-
+        $qb = $this->createQueryBuilder('a');
+        if ($filter->getCategory() !== NULL) {
+            $qb
+                ->where('a.category = :category')
+                ->andWhere('a.country = :country')
+                ->setParameters(["category" => $filter->getCategory()->getId(),
+                    "country" => $filter->getCountry()->getId()]);
+        };
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
 
     // /**
     //  * @return Article[] Returns an array of Article objects
@@ -112,5 +70,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
+    */
+
 
 }

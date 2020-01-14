@@ -1,22 +1,26 @@
 <?php
 namespace App\Controller;
-use App\Repository\UserRepository;
+
+use App\Model\Filter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\Article;
-use App\Entity\Country;
 use App\Entity\Comment;
+
 use App\Entity\User;
 use App\Entity\Category;
+
 use Symfony\Component\Security\Core\Security;
 use App\Form\CommentFormType;
+use App\Form\FilterFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\CountryRepository;
 use App\Repository\CommentRepository;
+
 use App\Repository\CategoryRepository;
+
+use App\Repository\UserRepository;
+
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\Tools\Pagination\Paginator;
-use Symfony\Component\String\Slugger\AsciiSlugger;
-use Doctrine\Common\Persistence\ObjectManager;
+
 class ArticleController extends AbstractController
 {
     private $articleRepository;
@@ -25,7 +29,10 @@ class ArticleController extends AbstractController
     private $userRepository;
     private $categoryRepository;
 
-    public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, CommentRepository $commentRepository, UserRepository $userRepository, CategoryRepository $categoryRepository)
+
+
+    public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, UserRepository $userRepository)
+
     {
         $this->articleRepository = $articleRepository;
         $this->countryRepository = $countryRepository;
@@ -34,25 +41,29 @@ class ArticleController extends AbstractController
         $this->categoryRepository = $categoryRepository;
     }
 
-    public function articlesAction($slug){
 
+    public function articlesAction(Request $request, $slug){
         //recuperer le country a patir du slug
         $country = $this->countryRepository->findOneBy(["slug" => $slug]);
         $articles = $this->articleRepository->findBy(["country" => $country]);
-        $categories = $this->categoryRepository->findAll();
-        //$category = $this->categoryRepository->findOneBy(["categories" => $categories]);
-        //$article =$this->articleRepository->findBy(["country" => $country, "category" => $category]);
-     /*  foreach ($articles as $articleCategory){
-           $articleCategory = $this->articleRepository->findBy(["categories" => $categories]);
-        }*/
-        //$category = $this->categoryRepository->findOneById($id);
+
+        $filter = new Filter();
+        $filterForm = $this->createForm(FilterFormType::class, $filter);
+        $filterForm->handleRequest($request);
+
+        if($filterForm->isSubmitted()) {
+            $filter = $filterForm->getData();
+            $filter->setCountry($country);
+            $articles = $this->articleRepository->filteredArticles($filter);
+        }
 
 
         return $this->render('user/pages/country.html.twig', [
             "articles" => $articles,
             "slug" => $slug,
-            "categories" => $categories,
-            "country" => $country,
+
+            "filter" => $filter,
+            "filterForm" => $filterForm->createView(),
 
         ]);
     }
@@ -60,27 +71,35 @@ class ArticleController extends AbstractController
 
 
     public function articleAction($slug, Request $request, Security $security){
+        $comment = new Comment();
         $article = $this->articleRepository->findOneBy(["slug" => $slug]);
 
-        $comment = new Comment();
+
         $formComment = $this->createForm(CommentFormType::class, $comment);
         $formComment->handleRequest($request);
 
         if($formComment->isSubmitted() && $formComment->isValid()){
 
             $comment = $formComment->getData();
-            $user = $this->userRepository->findOneBy(['username' => $security->getUser()->getUsername()]);
-            $comment->setUser($user);
-            $comment->getId();
-            /* $article = $this->articleRepository->findOneBy(['id' = $id]); */
+            $user = $this->userRepository->findOneBy(['id' => $security->getUser()->getId()]);
+            $comment->setUser($user)
+                    ->setCreatedAt(new \DateTime())
+                    ->setIsSignaled(false)
+                    ->setIsVisible(true)
+                    ->setArticle($article);
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($comment);
             $manager->flush();
-            return $this->redirectToRoute('article');
+
+            /* return $this->render('user/pages/article.html.twig', [
+                        "article" => $article, "comment" => $comment
+                    ]); */
         }
         return $this->render('user/pages/article.html.twig', [
-            "article" => $article, "comment" => $comment,  "formComment" => $formComment->createView()
+            "article" => $article,
+            "comment" => $comment,
+            "formComment" => $formComment->createView(),
         ]);
     }
-
 }

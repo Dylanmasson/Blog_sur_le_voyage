@@ -2,6 +2,13 @@
 
 {% block body %}
 
+    {% if app.user %}
+    <p class="ml-4 mt-4">Connecté en tant que : {{ app.user.username }}</p>
+    {% else %}
+    <p class="ml-4 mt-4">Vous n'etes pas connecté</p>
+    {% endif %}
+
+
 <h1 class="titles mt-5">The Traveller's Guide to the World</h1>
 
     <div class="container mt-4">
@@ -16,11 +23,11 @@
 
     </div>
 
-    <h2 class="titles mt-5">Visitez notre site</h2>
+    <h2 class="titles mt-5">Carte du monde</h2>
 
     <div class="container">
 
-        <h3 class="mt-5">Les continents</h3>
+        {% include 'user/component/map.html.twig' %}
 
         {% for continent in continents %}
         <div class="lien">
@@ -32,6 +39,9 @@
 
     <h2 class="titles mt-5">Les derniers articles</h2>
 
+    <div class="mt-5">
+        {% include "user/pages/last_articles.html.twig" %}
+    </div>
 
 {% endblock %}
 
