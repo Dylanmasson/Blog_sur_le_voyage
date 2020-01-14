@@ -50,8 +50,9 @@ article_user:
 
 # page home du dashboard
 dashboard_home:
-  path: /dashboard/{username}
+  path: /dashboard/home
   controller: App\Controller\AdminController::homeAction
+
 
 
 # Formulaires
