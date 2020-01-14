@@ -1,19 +1,36 @@
 
 {% block body %}
-<div class="row">
-    {% for article in articles %}
-        <div class="col-md-4 mb-3">
-            <div class="card">
-                <div class="card-body">
-                    {% if article.image %}
-                        <img class="card-img-top" src="{{ article.image }}">
-                    {% endif %}
-                    <h5 class="card-title">{{ article.title }}</h5>
-                    <h5 class="card-title">{{ article.created_at|date("d/m/Y") }}</h5>
-                    <a href="{{ path("article", {country: slug, slug : article.slug}) }}" class="btn btn-primary">Voir</a>
-                </div>
+
+    {{ form_start(filterForm) }}
+    <form>
+        <div class="form-row mt-4">
+            <div class="form-group col-2">
+                {{ form_row(filterForm.category, {'attr': {'class': 'form-control'}, 'label': 'Filtrer par catégories'}) }}
+            </div>
+            <div class="col-2">
+                <label>.</label>
+                <button type="submit" class="btn btn-info btn-block">Rechercher</button>
             </div>
         </div>
-    {% endfor %}
-</div>
+    </form>
+
+    {{ form_end(filterForm) }}
+
+    <div class="row mt-4">
+        {% for article in articles %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        {% if article.image %}
+                            <img class="card-img-top" src="{{ article.image }}">
+                        {% endif %}
+                        <h5 class="card-title">{{ article.title }}</h5>
+                        <h5 class="card-title">{{ article.created_at|date("d/m/Y") }}</h5>
+                        <a href="{{ path("article", {country: slug, slug : article.slug}) }}" class="btn btn-primary">Voir</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
