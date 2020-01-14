@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+{{ dump(search) }}
+<div class="container">
+    <h1>Rechercher un article</h1>
+    {{ form_start(searchForm) }}
+    <div class="row mt-3">
+        <div class="col-6">
+            {{ form_row(searchForm.country)}}
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-6">
+            {{ form_row(searchForm.category) }}
+        </div>
+    </div>
+
+    {{ form_end(searchForm) }}
+</div>
+
+
+    {% for article in articles %}
+
+        {% if article.category and search.country %}
+            {% if article.category.id == search.category.id %}
+
+
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            {% if article.image %}
+                                <img class="card-img-top" src="{{ article.image }}">
+                            {% endif %}
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <h5 class="card-title">{{ article.created_at|date("d/m/Y") }}</h5>
+                        </div>
+                    </div>
+                </div>
+
+            {% endif %}
+        {% endif %}
+
+    {% endfor %}
+    {#<div class="row mt-4">
+        <div class="col-8"> <button type="submit" class="btn btn-info btn-block">Rechercher l'article</button></div>
+    </div>#}
+    {% endblock %}

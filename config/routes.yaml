@@ -45,6 +45,10 @@ article_user:
   path: /{user}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
+search:
+  path: /search
+  controller: App\Controller\SearchController::searchAction
+
 
 # Partie administration
 

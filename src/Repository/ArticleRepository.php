@@ -42,6 +42,24 @@ class ArticleRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function searchArticle(SearchModel $search)
+    {
+
+        $qb = $this->createQueryBuilder('a');
+
+        if ($search->getCategory()->getId() !== null && $search->getCountry()->getId() !== null) {
+            $qb
+
+                ->Where('a.category = :category')
+                ->andWhere('a.country = :country')
+                ->setParameter(['category' => $search->getCategory()->getId(),
+                    "country" => $search->getCountry()->getId()]);
+        }
+        return $qb->getQuery()
+            ->getResult();
+
+
+    }
 
     // /**
     //  * @return Article[] Returns an array of Article objects
