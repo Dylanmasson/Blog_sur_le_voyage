@@ -20,6 +20,19 @@ articles:
   path: /country/{slug}
   controller: App\Controller\ArticleController::articlesAction
 
+category:
+  path: /{slug}/articles/{category}
+  controller: App\Controller\ArticleController::articlesAction
+
+article_user:
+  path: /{user}/article/{slug}
+  controller: App\Controller\ArticleController::articleAction
+
+search:
+  path: /search
+  controller: App\Controller\SearchController::searchAction
+
+
 # page d'un article
 article:
   path: /{country}/article/{slug}
@@ -70,3 +83,4 @@ update_article:
 form_inscription:
   path: /inscription
   controller: App\Security\RegistrationController::registration
+

@@ -6,7 +6,29 @@
 
     <div class="container mb-5">
 
+    {{ dump(articles) }}
+    {{ dump(categories) }}
+    {{ dump(country) }}
+
+    <div class="btn-group">
+        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Choisissez une catégorie
+        </button>
+        <div class="dropdown-menu">
+
+
+            <a class="dropdown-item" href="{{ path('articles',{slug:country.slug}) }}">Voir tous les articles</a>
+
+            {% for category in categories %}
+
+                <a class="dropdown-item" href="{{ path('category',{slug: country.slug, category:category.slug}) }}">{{category.name}}</a>
+
+            {% endfor %}
+        </div>
+    </div>
+
     {% include 'user/pages/articles.html.twig' %}
 
     </div>
+
 {% endblock %}
