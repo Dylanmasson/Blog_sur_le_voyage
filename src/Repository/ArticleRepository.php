@@ -3,9 +3,14 @@
 namespace App\Repository;
 
 use App\Entity\Article;
+use App\Entity\Category;
+use App\Entity\Continent;
+use App\Entity\Country;
+use App\model\SearchModel;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Component\String\Slugger\AsciiSlugger;
 use Doctrine\ORM\EntityRepository;
 /**
@@ -35,16 +40,23 @@ class ArticleRepository extends ServiceEntityRepository
 
     }
 
-    public function findByCategoryAndCountry($category, $country)
+    public function searchArticle(SearchModel $search)
     {
-        return $this->createQueryBuilder('a')
-            ->Where('a.category LIKE :category')
-            ->andWhere('a.country = :country')
-            ->setParameter('category', $category)
-            ->setParameter('country', $country)
-            ->getQuery()
-            ->getResult()
-            ;
+
+        $qb = $this->createQueryBuilder('a');
+
+            if ($search->getCategory()->getId() !== null && $search->getCountry()->getId() !== null) {
+                $qb
+
+                        ->Where('a.category = :category')
+                        ->andWhere('a.country = :country')
+                        ->setParameter(['category' => $search->getCategory()->getId(),
+                            "country" => $search->getCountry()->getId()]);
+            }
+            return $qb->getQuery()
+                      ->getResult();
+
+
     }
 
   /*   public function findArticlesByCountry(Country $country){
@@ -68,7 +80,7 @@ class ArticleRepository extends ServiceEntityRepository
             ->setMaxResults($limit); // Limit
 
         return $paginator;
-    }
+    }}
 
 
 
@@ -100,5 +112,5 @@ class ArticleRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

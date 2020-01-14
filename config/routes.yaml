@@ -28,6 +28,10 @@ article_user:
   path: /{user}/article/{article}
   controller: App\Controller\ArticleController::articleAction
 
+search:
+  path: /search
+  controller: App\Controller\SearchController::searchAction
+
 
 # page d'un article
 article:
