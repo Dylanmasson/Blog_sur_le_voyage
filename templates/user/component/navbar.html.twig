@@ -16,7 +16,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     {% for continent in continents %}
-                        <a class="dropdown-item" href="{{ path('continent', {name:continent.name}) }}" style="background-color: #76b7cc">{{continent.name}}</a>
+                        <span class="dropdown-item continents">{{continent.name}}</span>
 
                         <div class="dropdown-divider"></div>
                         {% for country in continent.countries %}
@@ -56,8 +56,11 @@
             </li>
 
 
-            {% endif %}
 
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link " href="{{ path("search") }}">Formulaire de recherche</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

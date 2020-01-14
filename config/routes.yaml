@@ -10,16 +10,6 @@ home:
   path: /
   controller: App\Controller\HomeController::homeAction
 
-# navbar
-navbar:
-  path: /navbar
-  controller: App\Controller\NavbarController::homeAction
-
-# page d'un article à partir de la home
-last_articles:
-  path: /article/{slug}
-  controller: App\Controller\ArticleController::articleAction
-
 # page du continent
 continent:
   path: /continent/{name}
@@ -35,6 +25,16 @@ article:
   path: /{country}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
+# page d'un article à partir de la home
+last_articles:
+  path: /article/{slug}
+  controller: App\Controller\ArticleController::articleAction
+
+# navbar
+navbar:
+  path: /navbar
+  controller: App\Controller\NavbarController::homeAction
+
 # page user
 page_user:
   path: /user/{username}
@@ -45,11 +45,9 @@ article_user:
   path: /{user}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
-# page search
 search:
   path: /search
   controller: App\Controller\SearchController::searchAction
-
 
 
 # Partie administration
@@ -58,7 +56,6 @@ search:
 dashboard_home:
   path: /dashboard/home
   controller: App\Controller\AdminController::homeAction
-
 
 
 # Formulaires
