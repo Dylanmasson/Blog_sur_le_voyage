@@ -2,13 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Article;
-use App\Entity\Category;
-use App\Entity\Country;
 use App\Form\SearchFormType;
 use App\model\SearchModel;
 use App\Repository\CountryRepository;
-use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\ArticleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
