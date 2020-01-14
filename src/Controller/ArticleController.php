@@ -1,11 +1,12 @@
 <?php
 namespace App\Controller;
 
-
+use App\Model\Filter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Entity\Comment;
 use Symfony\Component\Security\Core\Security;
 use App\Form\CommentFormType;
+use App\Form\FilterFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\CountryRepository;
 use App\Repository\CommentRepository;
@@ -20,7 +21,7 @@ class ArticleController extends AbstractController
     private $userRepository;
 
 
-    public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, CommentRepository $commentRepository, UserRepository $userRepository)
+    public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, UserRepository $userRepository)
     {
         $this->articleRepository = $articleRepository;
         $this->countryRepository = $countryRepository;
@@ -29,18 +30,25 @@ class ArticleController extends AbstractController
     }
 
     public function articlesAction(Request $request, $slug){
-        $from = $request->query->get("from");
-
         //recuperer le country a patir du slug
         $country = $this->countryRepository->findOneBy(["slug" => $slug]);
         $articles = $this->articleRepository->findBy(["country" => $country]);
-        if(is_null($from) || $from < 1) {
-            $from = 1;
+
+        $filter = new Filter();
+        $filterForm = $this->createForm(FilterFormType::class, $filter);
+        $filterForm->handleRequest($request);
+
+        if($filterForm->isSubmitted()) {
+            $filter = $filterForm->getData();
+            $filter->setCountry($country);
+            $articles = $this->articleRepository->filteredArticles($filter);
         }
 
         return $this->render('user/pages/country.html.twig', [
             "articles" => $articles,
             "slug" => $slug,
+            "filter" => $filter,
+            "filterForm" => $filterForm->createView(),
         ]);
     }
 
@@ -62,8 +70,6 @@ class ArticleController extends AbstractController
                     ->setIsVisible(true)
                     ->setArticle($article);
 
-
-
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($comment);
             $manager->flush();
@@ -75,7 +81,7 @@ class ArticleController extends AbstractController
         return $this->render('user/pages/article.html.twig', [
             "article" => $article,
             "comment" => $comment,
-            "formComment" => $formComment->createView()
+            "formComment" => $formComment->createView(),
         ]);
     }
 }
