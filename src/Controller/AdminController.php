@@ -7,6 +7,7 @@ use App\Repository\CategoryRepository;
 use App\Repository\CountryRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
 
 class AdminController extends AbstractController
 {
@@ -23,7 +24,8 @@ class AdminController extends AbstractController
         $this->categoryRepository = $categoryRepository;
         $this->userRepository = $userRepository;
     }
-    public function homeAction($username){
+    public function homeAction(){
+        $username = new User;
         $user = $this->userRepository->findOneBy(["username" => $username]);
         $categories = $this->categoryRepository->findAll();
         $articles = $this->articleRepository->findBy(["user" => $user]);

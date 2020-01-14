@@ -3,7 +3,7 @@
 {% block body %}
 
     <h1 class="upc">Liste des articles</h1>
-    {% if user %}
+
     <table class="table container mt-5">
         <thead>
         <tr>
@@ -16,8 +16,12 @@
         </tr>
         </thead>
 
+
+
         <tbody>
-        {% for article in articles %}
+
+            {% for article in app.user.articles %}
+
             <tr>
                 <td>{{ article.country.name }}</td>
                 <td>{{ article.title }}</td>
@@ -26,9 +30,11 @@
                 <td>{{ article.createdAt | date("d-m-Y") }}</td>
                 <td><a href="{{ path('update_article', {id: article.id}) }}" id="lien"><img src="{{asset("medias/images/edit.svg")}}" height="20px" alt="Icone modifier"></a></td>
             </tr>
+
         {% endfor %}
+
         </tbody>
+
     </table>
-    {% endif %}
 
 {% endblock %}
