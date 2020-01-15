@@ -3,7 +3,9 @@
 {% block body %}
 
 <h1 class="titles mt-5"> {{name}} </h1>
-
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-3">
+    <img class="card-img-top" style="width: 30ch" src="{{ continent.image }}">
+    </div>
 <div class="container">
 
     {% for country in countries %}
