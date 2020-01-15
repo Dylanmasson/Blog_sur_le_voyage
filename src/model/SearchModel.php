@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\model;
+namespace App\Model;
 
 use App\Entity\Category;
 use App\Entity\Country;
