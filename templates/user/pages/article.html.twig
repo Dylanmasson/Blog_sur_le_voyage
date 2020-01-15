@@ -24,7 +24,7 @@
         <div class="article">
             <div class="credit">Publié par <a href="{{ path('page_user', {username:article.user.username}) }}"><span class="user">{{article.user.username}}</span></a> {{ article.created_at|date("d/m/Y") }} </div>
             <div class="image mt-5" style="width: 500px"><img class="card-img-top" src=" {{article.image}} " onclick="window.open(this.src)" alt="image de l'article"></div>
-            <p> Cliquer sur la photo pour agrandir !</p>
+            <p> Cliquer sur la photo pour agrandir </p>
             <div class="mt-5 ml-5 mr-5 content"> {{article.content|raw}} </div>
         </div>
     </div>
