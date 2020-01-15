@@ -115,7 +115,4 @@ class Continent
 
         return $this;
     }
-
-    
- 
 }
