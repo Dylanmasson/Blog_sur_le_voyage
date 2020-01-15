@@ -1,5 +1,5 @@
 
-<nav class="nav flex-column p-3 upc">
+<nav class="nav flex-column p-3 upc sticky-top">
     <a class="nav-link mb-2 {{'home' in app.request.requestUri ? 'active'}}" href="{{path('home')}}"><img
                 src="{{ asset('medias/images/retour.svg') }}" height="15px" class="mr-2" alt="Flèche retour">Retour</a>
     <a class="nav-link" href="{{path('dashboard_home')}}">Home</a>
