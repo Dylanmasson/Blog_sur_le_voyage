@@ -21,6 +21,8 @@ class ArticleController extends AbstractController
     private $userRepository;
     private $categoryRepository;
 
+
+
     public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, UserRepository $userRepository, CategoryRepository $categoryRepository)
     {
         $this->articleRepository = $articleRepository;

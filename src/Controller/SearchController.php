@@ -27,7 +27,8 @@ class SearchController extends AbstractController
     public function searchAction(Request $request)
     {
         $search = new SearchModel();
-        /*$country = $this->countryRepository->findOneBy(["slug" => $slug]);*/
+        /*$country = $this->countryRepository->findOneBy(["slug" => $slug]);
+        $articles = $this->articleRepository->findBy(["country" => $country]);*/
         $searchForm = $this->createForm(SearchFormType::class);
         $articles = $this->articleRepository->findAll();
 
@@ -41,6 +42,8 @@ class SearchController extends AbstractController
         return $this->render('user/component/search.html.twig', [
             "articles" => $articles,
             "search" => $search,
+            /*"slug" => $slug,
+            "articles" => $articles,*/
             "searchForm" => $searchForm->createView(),
         ]);
     }
