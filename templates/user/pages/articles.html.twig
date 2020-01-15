@@ -12,6 +12,10 @@
                 <button type="submit" class="btn btn-info btn-block">Rechercher</button>
             </div>
         </div>
+        <div class="form-row">
+        <div class="col-4"><a class="btn btn-default btn-info btn-block" href="{{ path('articles',{slug: slug}) }}">Voir tous les articles</a></div>
+
+        </div>
     </form>
 
     {{ form_end(filterForm) }}
