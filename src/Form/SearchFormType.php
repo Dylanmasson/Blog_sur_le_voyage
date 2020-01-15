@@ -17,11 +17,15 @@ class SearchFormType extends AbstractType
     {
         $builder
             ->add('category', EntityType::class, [
-                'class' => Category::class, 'choice_label' => 'name'
+                'required' => false,
+                'class' => Category::class,
+                'choice_label' => 'name'
             ])
             ->add('country', EntityType::class, [
-                'class' => Country::class, 'choice_label' => 'name'])
-            ->add('envoyer', SubmitType::class)
+                'required' => false,
+                'class' => Country::class,
+                'choice_label' => 'name'
+            ])
         ;
     }
 
