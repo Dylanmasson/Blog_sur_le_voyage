@@ -44,6 +44,14 @@ class ArticleFormController extends AbstractController
             $user = $this->userRepository->findOneBy(['email' => $security->getUser()->getEmail()]);
             $article->setUser($user);
 
+            $image = $formArticle['image']->getData();
+            if($image){
+                $originalFileName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                $newUniqueFileName = $originalFileName.'-'.uniqid().'.'.$image->guessExtension();
+                $image->move($this->getParameter('uploaded-images'), $newUniqueFileName);
+                $article->setImage($newUniqueFileName);
+            }
+
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($article);
             $manager->flush();
@@ -83,13 +91,5 @@ class ArticleFormController extends AbstractController
         }
         return $this->render('dashboard/form/update_article_form.html.twig', ["formArticle" => $formArticle->createView()]);
     }
-
-
-
-
-
-
-
-
 
 }

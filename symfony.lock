@@ -148,7 +148,7 @@
         "version": "2.2.3"
     },
     "php": {
-        "version": "7.3"
+        "version": "7.4"
     },
     "php-http/curl-client": {
         "version": "2.1.0"

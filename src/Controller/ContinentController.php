@@ -22,8 +22,9 @@ class ContinentController extends AbstractController
     public function continentAction($name){
         $continent = $this->continentRepository->findOneBy(["name" => $name]);
         $countries = $this->countryRepository->findBy(["continent" => $continent]);
+        $continentAll = $this->continentRepository->findAll();
 
-        return $this->render('user/pages/continent.html.twig', ["countries" => $countries, "name" => $name]);
+        return $this->render('user/pages/continent.html.twig', ["countries" => $countries, "name" => $name, "continents" => $continentAll]);
     }
 
 

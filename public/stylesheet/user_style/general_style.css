@@ -63,6 +63,27 @@ a .lien{
     text-align: center;
 }
 
+.logo{
+    width: 50%;
+}
+
+.map{
+    display: none;
+}
+
+@media screen and (min-width: 980px) {
+    .map{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 780px) and (max-width: 979px) {
+
+    .map{
+        display: none;
+    }
+}
+
 
 /* FOOTER */
 
@@ -79,3 +100,10 @@ a .lien{
 .footer a{
     color: white;
 }
+
+.image-continent{
+    margin: auto;
+}
+
+
+

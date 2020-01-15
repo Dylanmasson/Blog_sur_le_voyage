@@ -19,4 +19,12 @@ class CountryController extends AbstractController
         $this->countryRepository = $countryRepository;
     }
 
+    public function countryAction(){
+
+        $country = $this->countryRepository->FindAll();
+
+
+        return $this->render('user/pages/country.html.twig', ["country" => $country]);
+    }
+
 }

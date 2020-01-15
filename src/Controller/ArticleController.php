@@ -21,6 +21,8 @@ class ArticleController extends AbstractController
     private $userRepository;
     private $categoryRepository;
 
+
+
     public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, UserRepository $userRepository, CategoryRepository $categoryRepository)
     {
         $this->articleRepository = $articleRepository;
@@ -35,6 +37,7 @@ class ArticleController extends AbstractController
         //recuperer le country a patir du slug
         $country = $this->countryRepository->findOneBy(["slug" => $slug]);
         $articles = $this->articleRepository->findBy(["country" => $country]);
+        $countries = $this->countryRepository->FindAll();
 
         $filter = new Filter();
         $filterForm = $this->createForm(FilterFormType::class, $filter);
@@ -51,6 +54,7 @@ class ArticleController extends AbstractController
             "slug" => $slug,
             "filter" => $filter,
             "filterForm" => $filterForm->createView(),
+            "countries" => $countries
 
         ]);
     }
