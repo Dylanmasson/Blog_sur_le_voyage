@@ -2,14 +2,16 @@
 
 {% block body %}
 
-    {% if app.user %}
-    <p class="ml-4 mt-4">Connecté en tant que : {{ app.user.username }}</p>
-    {% else %}
-    <p class="ml-4 mt-4">Vous n'etes pas connecté</p>
-    {% endif %}
+    <div class="connexion mr-5">
+        {% if app.user %}
+            <div class="ml-4 mt-4">Connecté en tant que : {{ app.user.username }}</div>
+        {% else %}
+            <div class="ml-4 mt-4">Vous n'etes pas connecté</div>
+        {% endif %}
+    </div>
 
 
-<h1 class="titles mt-5">The Traveller's Guide to the World</h1>
+    <h1 class="titles mt-4">The Traveller's Guide to the World</h1>
 
     <div class="container mt-4">
         <div class="row align-items-center">
@@ -27,12 +29,14 @@
 
     <div class="container">
 
+        <div class="map">
         {% include 'user/component/map.html.twig' %}
+        </div>
 
         {% for continent in continents %}
-        <div class="lien">
-            <a href="{{ path('continent', {name: continent.name}) }}"> <div>{{ continent.name }}</div> </a>
-        </div>
+            <div class="lien">
+                <a href="{{ path('continent', {name: continent.name}) }}"> <div>{{ continent.name }}</div> </a>
+            </div>
         {% endfor %}
 
     </div>

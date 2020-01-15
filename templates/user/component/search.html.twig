@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="titles">Rechercher un article</h1>
+    </div>
+    <div class="container">
+    {{ form_start(searchForm) }}
+    <div class="row mt-3">
+        <div class="col-6">
+            {{ form_row(searchForm.country, {'attr': {'class': 'form-control'}, 'label': 'Filtrer par pays (En Travaux)'}) }}
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-6 mt-4">
+            {{ form_row(searchForm.category, {'attr': {'class': 'form-control'}, 'label': 'Filtrer par catégories'}) }}
+        </div>
+    </div>
+    <div class="col-2 mt-3">
+        <label>.</label>
+        <button type="submit" class="btn btn-info btn-block">Rechercher</button>
+    </div>
+
+    {{ form_end(searchForm) }}
+    </div>
+</div>
+
+
+    {% for article in articles %}
+
+        {% if article.category and search.country %}
+            {% if article.category.id == search.category.id %}
+
+            <div class="container">
+                <div class="col-8 md-4 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            {% if article.image %}
+                                <img class="card-img-top" src="{{ article.image }}">
+                            {% endif %}
+                            <h5 class="card-title mt-4">titre : {{ article.title }}</h5>
+                            <h5 class="card-title mt-4">Publié le : {{ article.created_at|date("d/m/Y") }}</h5>
+                            {#<a href="{{ path("article", {country: slug, slug : article.slug}) }}" class="btn btn-primary">Voir</a>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+        {% endif %}
+
+    {% endfor %}
+
+    {% endblock %}

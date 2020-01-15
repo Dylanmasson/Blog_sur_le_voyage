@@ -45,6 +45,10 @@ article_user:
   path: /{user}/article/{slug}
   controller: App\Controller\ArticleController::articleAction
 
+search:
+  path: /search
+  controller: App\Controller\SearchController::searchAction
+
 
 # Partie administration
 
@@ -52,7 +56,6 @@ article_user:
 dashboard_home:
   path: /dashboard/home
   controller: App\Controller\AdminController::homeAction
-
 
 
 # Formulaires

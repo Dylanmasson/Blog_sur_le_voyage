@@ -18,8 +18,7 @@ class CommentFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('content')
-            ->add('envoyer', SubmitType::class);
+            ->add('content');
     }
 
     public function configureOptions(OptionsResolver $resolver)

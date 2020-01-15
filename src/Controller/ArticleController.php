@@ -9,7 +9,7 @@ use App\Form\CommentFormType;
 use App\Form\FilterFormType;
 use App\Repository\ArticleRepository;
 use App\Repository\CountryRepository;
-use App\Repository\CommentRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -19,15 +19,19 @@ class ArticleController extends AbstractController
     private $countryRepository;
     private $commentRepository;
     private $userRepository;
+    private $categoryRepository;
 
 
-    public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, UserRepository $userRepository)
+
+    public function __construct(ArticleRepository $articleRepository, CountryRepository $countryRepository, UserRepository $userRepository, CategoryRepository $categoryRepository)
     {
         $this->articleRepository = $articleRepository;
         $this->countryRepository = $countryRepository;
         $this->commentRepository = $countryRepository;
         $this->userRepository = $userRepository;
+        $this->categoryRepository = $categoryRepository;
     }
+
 
     public function articlesAction(Request $request, $slug){
         //recuperer le country a patir du slug
@@ -49,8 +53,10 @@ class ArticleController extends AbstractController
             "slug" => $slug,
             "filter" => $filter,
             "filterForm" => $filterForm->createView(),
+
         ]);
     }
+
 
     public function articleAction($slug, Request $request, Security $security){
         $comment = new Comment();

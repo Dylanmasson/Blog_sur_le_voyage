@@ -13,6 +13,7 @@
     {% for article in articles %}
 
     <div class="col-sm-6 col-md-6 col-lg-6" style="width: 300px"><img class="card-img-top" src=" {{article.image}}" alt="Photo article"></div>
+    
         <a href="{{ path("article_user", {user: user.username, slug : article.slug}) }}" class="btn btn-primary">Voir</a>
 
     {% endfor %}

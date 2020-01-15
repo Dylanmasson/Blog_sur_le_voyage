@@ -15,7 +15,7 @@
 
 /* Taille catégorie */
 .category{
-    font-size: 2.3em;
+    font-size: 2em;
 }
 
 /* Taille tags */
@@ -34,9 +34,44 @@
     text-align: justify;
 }
 
-/* Remplacement en attendant l'image */
-.image{
-    background-color: grey;
-    height: 400px;
+
+/* COMMENTAIRES */
+
+/* Style cases commentaire */
+.comments{
+    background-color: white;
+    color: #616161;
+    text-align: justify;
+    width: 80%;
     margin: auto;
 }
+
+/* Style created_at */
+.created_at{
+    text-align: right;
+    font-size: 0.7em;
+    font-style: italic;
+}
+
+/* Style username */
+.username{
+    text-align: center;
+}
+
+/* Font color white */
+.white{
+    color: white;
+}
+
+/* Center */
+.center{
+    margin: auto;
+}
+
+.separation{
+    background-color: white;
+    height: 2px;
+    width: 30%;
+    margin: auto;
+}
+
