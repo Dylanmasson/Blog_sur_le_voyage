@@ -10,30 +10,30 @@
     {{ form_start(form) }}
 
         <div class="row mt-3">
-            <div class="col-8">
+            <div class="col-sm-8 col-md-8 col-lg-8">
                 {{ form_row(form.username, {'attr': {'class': 'form-control', 'placeholder' : "Votre nom d\'utilisateur"}, 'label': 'Nom d\'utilisateur'}) }}
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-8">
+            <div class="col-sm-8 col-md-8 col-lg-8">
                 {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder' : "Votre email"}, 'label': 'Votre adresse mail'}) }}
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-4">
+            <div class="col-sm-4 col-md-4 col-lg-4">
                 {{ form_row(form.password, {'attr': {'class': 'form-control', 'placeholder' : "Votre mot de passe"}, 'label': 'Entrez votre mot de passe'}) }}
             </div>
-            <div class="col-4">
+            <div class="col-sm-4 col-md-4 col-lg-4">
                 {{ form_row(form.confirm_password, {'attr': {'class': 'form-control', 'placeholder' : "Votre mot de passe"}, 'label': 'Confirmez votre mot de passe'}) }}
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-4">
+            <div class="col-sm-4 col-md-4 col-lg-4">
                 {{ form_row(form.agreeTerms, {'attr': {'class': 'form-control' }}) }}</div>
         </div>
 
         <div class="row mt-4">
-            <div class="col-8"> <button type="submit" class="btn btn-info btn-block">S'inscrire</button></div>
+            <div class="col-sm-8 col-md-8 col-lg-8"> <button type="submit" class="btn btn-info btn-block">S'inscrire</button></div>
         </div>
 
     </div>

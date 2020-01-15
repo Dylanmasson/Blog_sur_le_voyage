@@ -78,7 +78,7 @@
         {% if app.user %}
         {{ form_start(formComment) }}
         <div class="row mt-3">
-            <div class="col-8">
+            <div class="col-sm-8 col-md-8 col-lg-8">
                 {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': 'Votre commentaire:'}) }}
             </div>
             <div class="row mt-4">

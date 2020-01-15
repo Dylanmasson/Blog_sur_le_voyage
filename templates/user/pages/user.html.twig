@@ -3,16 +3,16 @@
 {% block body %}
 
     <div class="row">
-        <div class="col-6 col-md-4"></div>
-        <div class="col-6 col-md-4" style="width: 500px"><img class="card-img-top" src=" {{user.image}}" alt="Photo user"></div>
-        <div class="col-6 col-md-4"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6" style="width: 500px"><img class="card-img-top" src=" {{user.image}}" alt="Photo user"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6"></div>
     </div>
 
     <h1 class="titles mt-5"> {{user.username}} </h1>
 
     {% for article in articles %}
 
-    <div class="col-6 col-md-4" style="width: 300px"><img class="card-img-top" src=" {{article.image}}" alt="Photo article"></div>
+    <div class="col-sm-6 col-md-6 col-lg-6" style="width: 300px"><img class="card-img-top" src=" {{article.image}}" alt="Photo article"></div>
         <a href="{{ path("article_user", {user: user.username, slug : article.slug}) }}" class="btn btn-primary">Voir</a>
 
     {% endfor %}
