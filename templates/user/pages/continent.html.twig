@@ -2,18 +2,33 @@
 
 {% block body %}
 
-<h1 class="titles mt-5"> {{name}} </h1>
-    <div class="col-sm-4 col-md-4 col-lg-4 mb-3">
-    <img class="card-img-top" style="width: 30ch" src="{{ continent.image }}">
-    </div>
-<div class="container">
+    <h1 class="titles mt-5"> {{name}} </h1>
 
-    {% for country in countries %}
-    <div class="lien">
-        <a href="{{ path('articles',{slug:country.slug})}}"> <div>{{ country.name }}</div> </a>
-    </div>
-    {% endfor %}
+    <div class="container">
 
-</div>
+        {% for continent in continents %}
+            {% if continent.name == name %}
+                <div>
+                    <img class="image-continent" src="{{continent.image}}" width="500px">
+                </div>
+                <div class="mt-5">
+                    <div>{{continent.content}}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+        <div class="mt-5">
+            <h2 class="titles">Liste des pays</h2>
+        </div>
+
+        {% for country in countries %}
+            <div class="lien mt-3">
+                <a href="{{ path('articles',{slug:country.slug})}}"> <h3>{{ country.name }}</h3> </a>
+            </div>
+        {% endfor %}
+        </div>
+
+    </div>
 
 {% endblock %}
