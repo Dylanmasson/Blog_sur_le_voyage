@@ -1,3 +1,17 @@
-.continents {
-    background-color: powderblue;
+/* NAVBAR */
+
+/* Style navbar (taille, épaisseur, bg) */
+.bg{
+    font-size: 1.3em;
+    font-weight: lighter;
+    background-color: #76b7cc;
 }
+
+.connexion{
+    text-align: right;
+}
+
+.navbar{
+    color: white;
+}
+
