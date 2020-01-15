@@ -2,72 +2,56 @@
     <link rel="stylesheet" href="{{ asset('stylesheet/user_style/navbar.css') }}">
 {% endblock %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ path('home')}}">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-dark bg">
+    <a class="navbar-brand ml-5" href="{{ path('home')}}">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                     Continents
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu">
                     {% for continent in continents %}
-                        <span class="dropdown-item continents">{{continent.name}}</span>
-
+                        <span class="dropdown-item">{{continent.name}}</span>
                         <div class="dropdown-divider"></div>
                         {% for country in continent.countries %}
                             <div class="dropdown-submenu">
-
                                 <a class="dropdown-item" href="{{ path('articles',{slug:country.slug})}}">{{country.name}}</a>
-
                             </div>
-
                         {% endfor %}
-
                         <div class="dropdown-divider"></div>
-
                     {% endfor %}
                 </div>
-
-
             </li>
-
             <li class="nav-item">
                 <a class="nav-link " href="{{ path("dashboard_home") }}">Mon compte</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{{ path("form_inscription") }}">S'inscrire</a>
-            </li>
-
-            {% if not app.user %}
-
-            <li class="nav-item">
-                <a class="nav-link " href="{{ path("app_login") }}">login</a>
-            </li>
-
-            {% else %}
-
-            <li class="nav-item">
-                <a class="nav-link " href="{{ path("app_logout") }}">Logout</a>
-            </li>
-
-
-
-            {% endif %}
-            <li class="nav-item">
                 <a class="nav-link " href="{{ path("search") }}">Formulaire de recherche</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <ul class="navbar-nav mr-5">
+            {% if not app.user %}
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path("app_login") }}">login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path("form_inscription") }}">S'inscrire</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ path("app_logout") }}">Logout</a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
 </nav>
+
+
 
 
 
