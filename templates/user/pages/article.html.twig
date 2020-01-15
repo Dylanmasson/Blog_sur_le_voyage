@@ -23,67 +23,71 @@
     <div class="container mt-3 mb-5">
         <div class="article">
             <div class="credit">Publié par <a href="{{ path('page_user', {username:article.user.username}) }}"><span class="user">{{article.user.username}}</span></a> {{ article.created_at|date("d/m/Y") }} </div>
-            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src=" {{article.image}} " alt="image de l'article"></div>
+            <div class="image mt-5" style="width: 500px"><img class="card-img-top" src="/uploads/images/{{article.image}}" alt="image de l'article"></div>
             <div class="mt-5 ml-5 mr-5 content"> {{article.content|raw}} </div>
         </div>
     </div>
 
     <div id="conteneur">
-            <div id="myNav" class="overlay">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav('myNav')">&times;</a>
-                <div class="overlay-content">
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav('myNav')">&times;</a>
+            <div class="overlay-content">
 
-                    <h1 class="white">Commentaires</h1>
+                <h1 class="white">Commentaires</h1>
 
-                    <div class="container mt-4">
-                        {% for comment in article.comments %}
+                <div class="container mt-4">
+                    {% for comment in article.comments %}
 
-                            <div class="comments mb-3 pr-5 pl-5 pt-4">
-                                <div class="row align-items-center">
-                                    <div class="col-2 username">
-                                        {{ comment.user.username }}
-                                    </div>
-                                    <div class="col"></div>
-                                    <div class="col-9">
-                                        {{ comment.content }}
-                                    </div>
+                        <div class="comments mb-3 pr-5 pl-5 pt-4">
+                            <div class="row align-items-center">
+                                <div class="col-2 username">
+                                    {{ comment.user.username }}
                                 </div>
-                                <div class="created_at mt-3 pb-3">Publié le {{ comment.created_at | date('d/m/Y') }} à {{ comment.created_at| date('H:i:s') }}</div>
+                                <div class="col"></div>
+                                <div class="col-9">
+                                    {{ comment.content }}
+                                </div>
                             </div>
+                            <div class="created_at mt-3 pb-3">Publié le {{ comment.created_at | date('d/m/Y') }} à {{ comment.created_at| date('H:i:s') }}</div>
+                        </div>
 
-                        {%  endfor %}
-                    </div>
+                    {%  endfor %}
+                </div>
 
-                    <div class="separation mt-4"></div>
+                <div class="separation mt-4"></div>
 
-                    <div class="container mt-3 center">
+                <div class="container mt-3 center">
                     <h2 class="white">Ajouter un commentaire</h2>
 
                     {% if app.user %}
-        {{ form_start(formComment) }}
-        <div class="row mt-3">
-            <div class="col-sm-8 col-md-8 col-lg-8">
-                {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': 'Votre commentaire:'}) }}
-            </div>
-            <div class="row mt-4">
-                {{ form_row(formComment.envoyer) }}
-            </div>
-        </div>
-        {{ form_end(formComment) }}
-        {% else %}
-        <div class="p">Connectez-vous pour envoyer un commentaire</div>
-        {% endif %}
+                    {{ form_start(formComment) }}
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col-8 white">
+                            {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': ' '}) }}
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="row justify-content-center mt-3 mb-5">
+                        <div class="col-8">
+                            <div> <button type="submit" class="btn btn-info">Envoyer</button></div>
+                        </div>
                     </div>
                 </div>
+                {{ form_end(formComment) }}
+
+                {% else %}
+                    <div class="white mb-5">Connectez-vous pour envoyer un commentaire</div>
+                {% endif %}
+
             </div>
-            <div>
-                <div style="font-size:30px;cursor:pointer" onclick="openNav('myNav')"><button class="button">Voir les commentaires</button></div>
-            </div>
-        </ul>
-    </div>
-        {#{% for comment in comments %}
-        <div>{{ comment.content }}</div>
-        {% endfor %}#}
+        </div>
+        <div>
+            <div style="font-size:30px;cursor:pointer" onclick="openNav('myNav')"><button class="button">Voir les commentaires</button></div>
+        </div>
+        </div>
+
+
 
 
 {%  endblock %}
@@ -91,4 +95,3 @@
 {% block scripts %}
     <script src="{{ asset('script/comment_script.js') }}"></script>
 {% endblock %}
-
