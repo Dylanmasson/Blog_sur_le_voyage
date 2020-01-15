@@ -60,28 +60,20 @@
                     <h2 class="white">Ajouter un commentaire</h2>
 
                     {% if app.user %}
-                        {{ form_start(formComment) }}
-                        <div class="row">
-                            <div class="col"></div>
-                            <div class="col-8 white">
-                                {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': ' '}) }}
-                            </div>
-                            <div class="col"></div>
-                        </div>
-                            <div class="row justify-content-center mt-3 mb-5">
-                                <div class="col-8">
-                                    <div> <button type="submit" class="btn btn-info">Envoyer</button></div>
-                                </div>
-                            </div>
-                        </div>
-                        {{ form_end(formComment) }}
-
-                    {% else %}
-                        <div class="white mb-5">Connectez-vous pour envoyer un commentaire</div>
-                    {% endif %}
-
+        {{ form_start(formComment) }}
+        <div class="row mt-3">
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                {{ form_row(formComment.content, {'attr': {'class': 'form-control', 'placeholder': 'Contenu du commentaire'}, 'label': 'Votre commentaire:'}) }}
+            </div>
+            <div class="row mt-4">
+                {{ form_row(formComment.envoyer) }}
+            </div>
+        </div>
+        {{ form_end(formComment) }}
+        {% else %}
+        <div class="p">Connectez-vous pour envoyer un commentaire</div>
+        {% endif %}
                     </div>
-
                 </div>
             </div>
             <div>
@@ -89,11 +81,6 @@
             </div>
         </ul>
     </div>
-
-
-
-
-
         {#{% for comment in comments %}
         <div>{{ comment.content }}</div>
         {% endfor %}#}
