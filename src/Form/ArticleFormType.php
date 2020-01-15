@@ -8,6 +8,7 @@ use App\Entity\Country;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,7 +26,7 @@ class ArticleFormType extends AbstractType
                     'required' => 'true'
                 ]
             ])
-            ->add('image')
+            ->add('image', FileType::class, ['mapped' => false, 'required' => false])
             ->add('category', EntityType::class, [
                 'class' => Category::class, 'choice_label' => 'name'
             ])
@@ -43,4 +44,3 @@ class ArticleFormType extends AbstractType
         ]);
     }
 }
-
