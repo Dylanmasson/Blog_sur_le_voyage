@@ -16,7 +16,7 @@ class FilterFormType extends AbstractType
     {
         $builder
             ->add('category', EntityType::class, [
-                'required' => false,
+
                 'class' => Category::class,
                 'choice_label' => 'name'
             ])
