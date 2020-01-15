@@ -1,33 +1,29 @@
-    /* GENERAL */
+/* GENERAL */
 
-    /* Style body (font, couleur, alignement) */
-    body{
+/* Style body (font, couleur, alignement) */
+body{
     font-family: 'Quicksand', sans-serif;
     color: #616161;
 }
 
-    a{
-        color: #616161;
-    }
+a{
+    color: #616161;
+}
 
-    /* Style liens:hover (couleur) */
-    a:hover {
-        text-decoration: none;
-        color: #e6e6e6;
-    }
-
-
-    /* NAVBAR */
-
-    /* Style navbar (taille, épaisseur, bg) */
-    .navbar{
-    font-size: 1.3em;
-    font-weight: lighter;
-    background-color: #76b7cc;
+/* Style liens:hover (couleur) */
+a:hover {
+    text-decoration: none;
+    color: #e6e6e6;
 }
 
 
-    /* CONTENU */
+/* CONTENU */
+
+/* Style phrase login */
+.right{
+    display: flex;
+    right: 0;
+}
 
 /* TITRES */
 
@@ -59,9 +55,9 @@ a .lien{
     color: #616161;
 }
 
-    .lien a:hover{
-        color: #5eb5e0;
-    }
+.lien a:hover{
+    color: #5eb5e0;
+}
 
 .lien{
     text-align: center;
@@ -70,7 +66,7 @@ a .lien{
 
 /* FOOTER */
 
-    /* Style footer (bg, couleur, taille, position, poid et padding) */
+/* Style footer (bg, couleur, taille, position, poid et padding) */
 .footer{
     background-color: #5eb5e0;
     color: white;
@@ -78,4 +74,8 @@ a .lien{
     text-align: center;
     font-weight: lighter;
     padding: 5px;
-    }
+}
+
+.footer a{
+    color: white;
+}
